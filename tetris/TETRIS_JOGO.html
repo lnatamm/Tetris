@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head text = "black">
+<meta charset="UTF-8">
+<div style="font-family:Verdana" id="textoTitulo">
+<center>
+<h1>
+    Horror Tetris Game
+</h1>
+</center>
+</div>
+<style>
+
+    #x {
+        display: inline-block;
+    }
+
+    div {
+        font-size: 25px;
+        text-align: center
+    }
+
+    canvas {
+        display: block;
+        margin: 0 auto;
+    }
+
+    body {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+<link href="style.css" rel="stylesheet">
+</head>
+
+<body text = 'white'>
+
+    <div style='position:center; top:100px; left:600px;'>
+
+        <center><button id = "rank" type="button" onclick="menu.style.visibility = 'visible'; pontPrimeiro.style.visibility = 'visible'; pontSegundo.style.visibility = 'visible'; pontTerceiro.style.visibility = 'visible'; pontQuarto.style.visibility = 'visible'; pontQuinto.style.visibility = 'visible'; primeiroR.style.visibility = 'visible'; segundoR.style.visibility = 'visible'; terceiroR.style.visibility = 'visible'; quartoR.style.visibility = 'visible'; quintoR.style.visibility = 'visible';">
+            Ranking
+        </button></center>
+
+        <center><button id = "botao" type="button" onclick="menu.style.visibility = 'hidden'; pontPrimeiro.style.visibility = 'hidden'; pontSegundo.style.visibility = 'hidden'; pontTerceiro.style.visibility = 'hidden'; pontQuarto.style.visibility = 'hidden'; pontQuinto.style.visibility = 'hidden'; primeiroR.style.visibility = 'hidden'; segundoR.style.visibility = 'hidden'; terceiroR.style.visibility = 'hidden'; quartoR.style.visibility = 'hidden'; quintoR.style.visibility = 'hidden' ;myVideo.style.visibility = 'visible'; tela.style.visibility = 'visible'; if (efeitoSonoro.paused) {efeitoSonoro.currentTime = 0; efeitoSonoro.play();}else{efeitoSonoro.play();};fimDeJogo = false; controlec3 = true; pontos = 0;linhasremovidas = 0; linhas.innerHTML = linhasremovidas ; nivel = 1; niveis.innerHTML = nivel; botao.innerHTML = 'Iniciar Jogo';for (let i = 0; i < 7; i++){pecaStats[i][1] = 0;listaPecasHtml[i].innerHTML = pecaStats[i][1]}; iniciarTabuleiro(); desenharTabuleiro(); gerarPeca(true);nome = prompt('Digite seu nome (até 3 caracteres)'); while(nome.length > 3){nome = prompt('Insira até 3 caracteres')}; inicioDescida = Date.now(); descerPeca();">
+        Iniciar Jogo
+        </button></center>
+
+    </div>
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+
+
+        <body text="black">
+        <div id="textoPontos">Pontos:</div>
+        <div id="pontos">0</div>
+        </body>
+        </text>
+    </div>   
+    
+    <center><canvas id="retangulo" width="125" height="370"></canvas></center> 
+    <center><canvas id="menu" width="300" height="255"></canvas></center> 
+    <center><canvas id="guardado" width="125" height="125"></canvas></center>
+    <center><canvas id="pecas" width="125" height="400"></canvas></center>    
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca0">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca1">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca2">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca3">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca4">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca5">0</div>
+    </div>
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="peca6">0</div>
+    </div>
+    <center><canvas id="tela" width="305" height="600"></canvas></center>
+
+    
+    
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="textoLinhas">Linhas Removidas:</div>
+        <div id="linhas">0</div>
+    </div>
+
+
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="pontPrimeiro"></div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="pontSegundo"></div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="pontTerceiro"></div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="pontQuarto"></div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="pontQuinto"></div>
+</div>
+
+
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="primeiroR"> 1º</div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="segundoR"> 2º</div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="terceiroR"> 3º</div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="quartoR"> 4º</div>
+</div>
+
+<div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+    <div id="quintoR"> 5º</div>
+</div>
+
+
+
+    <div style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, Times, serif;text-align: center">
+        <div id="textoNivel">Nível:</div>
+        <div id="nivel">1</div>
+    </div>
+
+    <img id="imgJS" src="./jumpscare.gif">
+    <video autoplay muted loop id="myVideo">
+        <source src="./bg%20video.mp4" type="video/mp4">
+    </video>
+
+</body>
+<script src="tetris.js"></script>
+</html>

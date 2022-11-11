@@ -1,0 +1,71 @@
+#textoTitulo{
+    position: relative;
+    z-index: 1;
+  }
+  
+  #botao{
+    position: relative;
+  z-index: 1;
+  }
+  
+  #textoPontos{
+    position: relative;
+    z-index: 1;
+  }
+  #pontos{
+    position: relative;
+    z-index: 1;
+    margin: auto;
+  }
+  
+  #textoLinhas{
+    position: relative;
+    z-index: 1;
+  }
+  
+  #linhas{
+    position: relative;
+    z-index: 1;
+  }
+  
+  #textoNivel{
+    position: relative;
+    z-index: 1;
+  }
+  
+  #nivel{
+    position: relative;
+    z-index: 1;
+  }
+  
+  #retangulo{
+    background:rgb(0, 0, 0);
+    float:right;
+    position: absolute;
+    z-index: 1;
+    margin-left: 60%;
+  }
+  
+  #tela{
+    visibility: visible;
+    position: relative;
+    z-index: 1;
+    margin: auto;
+  }
+  
+  #imgJS{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  #myVideo {
+    visibility: visible;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
